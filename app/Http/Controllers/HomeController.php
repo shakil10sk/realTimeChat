@@ -7,6 +7,7 @@ use App\Models\Mesage;
 use Illuminate\Support\Facades\Auth;
 
 use App\Events\SendMesage;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -36,11 +37,14 @@ class HomeController extends Controller
 
 
     public function message(){
-        return Mesage::with('user')->get();
+        $data  =  Mesage::with('user')->get();
+        
+        return $data;
     }
 
     public function messageStore(Request $request){
         $user = Auth::user();
+        // $user = new User();
 
         $messge = $user->message()->create([
             'message' => $request->message,

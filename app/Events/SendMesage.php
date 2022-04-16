@@ -37,6 +37,6 @@ class SendMesage implements shouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chet-channel');
+        return new PrivateChannel('chat-channel');
     }
 }
